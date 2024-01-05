@@ -8,4 +8,13 @@ services:
       dockerfile: Dockerfile
     ports:
       - "4000:80"
+    networks:
+      - k8s-app-network
     restart: always
+
+networks:
+  # network apenas para client e server
+  k8s-app-network:
+    name: k8s-app-network
+    # default network type.
+    driver: bridge
