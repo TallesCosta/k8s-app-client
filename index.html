@@ -8,13 +8,11 @@
 <body>
     <h1 id="title"></h1>
     <script>
-        async function fetchData() {
+        (async function () {
             const response = await fetch('http://localhost:3000/api');
             const data = await response.json();
             document.getElementById('title').innerHTML = data.message;
-        }
-
-        fetchData();
+        })();
     </script>
 </body>
 </html>
