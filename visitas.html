@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K8s Example - Client</title>
+</head>
+<body>
+    <a href="index.html">Home</a> | <a href="visitas.html">Visitas</a>
+    <h1 id="visitas"></h1>
+    <button type="button" onclick="resetAPI()">Reset</button>
+    <script>
+        (async function () {
+            const response = await fetch('http://localhost:3000/api/visitas');
+            const data = await response.json();
+            document.getElementById('visitas').innerHTML = 'Número de visitas: ' + data.visitas;
+        })();
+
+        function resetAPI() {
+            const response = fetch('http://localhost:3000/api/reset');
+            response
+                .then(res => {
+                    window.location.reload();
+                });
+        };
+    </script>
+</body>
+</html>
